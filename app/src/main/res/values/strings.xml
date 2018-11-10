@@ -2,5 +2,6 @@
     <string name="app_name">AppAndroid</string>
     <string name="btn_GoExplorerPath">Explorer</string>
     <string name="btn_Search">Buscar</string>
-
+    <string name="btn_Done">Enviar</string>
+    <string name="txt_PathFile">Path</string>
 </resources>

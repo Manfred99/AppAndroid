@@ -21,7 +21,7 @@ public class List_Process {
 //        host=arg[0];
 //      }
 //      else{
-            host="emmanuel@192.168.43.27"; // enter username and ipaddress for machine you need to connect
+            host="scdv4001@192.168.1.14"; // enter username and ipaddress for machine you need to connect
 //      }
             String user=host.substring(0, host.indexOf('@'));
             host=host.substring(host.indexOf('@')+1);
@@ -33,7 +33,7 @@ public class List_Process {
             session.setUserInfo(ui);
             session.connect();
 
-            String command=  "cd Desktop && ./Procesos"; // enter any command you need to execute
+            String command=  "ls"; // enter any command you need to execute
 
             Channel channel=session.openChannel("exec");
             ((ChannelExec)channel).setCommand(command);
@@ -81,7 +81,7 @@ public class List_Process {
         public String getPassphrase(){ return null; }
         public boolean promptPassphrase(String message){ return true; }
         public boolean promptPassword(String message){
-            passwd="12345"; // enter the password for the machine you want to connect.
+            passwd="SCDV4001DEV"; // enter the password for the machine you want to connect.
             return true;
         }
         public void showMessage(String message){

@@ -31,6 +31,18 @@ public class MainActivity extends Activity {
                 return null;
             }
         }.execute(1);
+        new AsyncTask<Integer, Void, Void>(){
+            @Override
+            protected Void doInBackground(Integer... params) {
+                try {
+                    List_Process list = new List_Process();
+                    list.lista();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+        }.execute(1);
 
         process.setOnClickListener(new View.OnClickListener() {
             @Override

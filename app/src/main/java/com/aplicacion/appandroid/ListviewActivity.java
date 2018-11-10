@@ -33,8 +33,9 @@ public class ListviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listview);
         carpetaActual = findViewById(R.id.rutaActual);
-
+        //Pai ES ESTA LA DIRECCION INICIAL DE DONDE HAGARRA LOS DIRECTORIOS DE ALMACENAMIENTO INTERNO
         directorioRaiz = Environment.getExternalStorageDirectory().getPath();
+        //directorioRaiz = Environment.getRootDirectory().getPath();
         //directorioRaiz = getFilesDir().getPath();
         //directorioRaiz="/data/emmulated";
         verArchivoDirectorio(directorioRaiz);
