@@ -33,8 +33,8 @@ public class ListviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listview);
         carpetaActual = findViewById(R.id.rutaActual);
-        interestsList = new ArrayList<Map<String,String>>();
-        directorioRaiz = Environment.getRootDirectory().getPath();
+
+        directorioRaiz = Environment.getExternalStorageDirectory().getPath();
         //directorioRaiz = getFilesDir().getPath();
         //directorioRaiz="/data/emmulated";
         verArchivoDirectorio(directorioRaiz);
@@ -95,6 +95,7 @@ public class ListviewActivity extends AppCompatActivity {
         carpetaActual.setText("Estas en: "+ rutaDirectorio);
         listNombreArchivos = new ArrayList<String>();
         listRutaArchivos = new ArrayList<String>();
+        interestsList = new ArrayList<Map<String,String>>();
         File directorioActual = new File(rutaDirectorio);
         File[] listaArchivos = directorioActual.listFiles();
 
@@ -120,6 +121,9 @@ public class ListviewActivity extends AppCompatActivity {
             listNombreArchivos.add("No hay ningun archivo");
             listRutaArchivos.add(rutaDirectorio);
         }
+        fillList();
+    }
+    private void fillList(){
         for(int i =0; i<listNombreArchivos.size(); i++){
             interestsList.add(createInterest("interest", listNombreArchivos.get(i)));
         }

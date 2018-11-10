@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ExplorerActivity extends AppCompatActivity {
     Button searchButton;
@@ -37,6 +38,7 @@ public class ExplorerActivity extends AppCompatActivity {
     private void abrirArchivo(){
         try{
             txtUbicacion.setText(ubicacion);
+            Toast.makeText(ExplorerActivity.this, ubicacion, Toast.LENGTH_SHORT).show();
         }catch(Exception e){
 
         }
