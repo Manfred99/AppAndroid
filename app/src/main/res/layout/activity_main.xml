@@ -9,7 +9,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/btn_GoExplorerPath"
         android:layout_marginBottom="82dp"
-        android:text="Procesos" />
+        android:text="@string/btn_Procesos" />
 
     <Button
         android:id="@+id/btn_GoExplorerPath"
@@ -19,4 +19,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="186dp"
         android:text="@string/btn_GoExplorerPath" />
+
+    <Button
+        android:id="@+id/btn_sawTheServer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="195dp"
+        android:text="@string/btn_sawTheServer" />
 </RelativeLayout>

@@ -83,7 +83,7 @@ public class ExplorerActivity extends AppCompatActivity {
     }
     private void uploadFile(){
         FTPClient client = new FTPClient();
-        String sFTP = "192.168.1.14";//direccion del servidor
+        String sFTP = "192.168.43.239";//direccion del servidor
         String sUser = "transferftp";//usuario
         String sPassword = "FTPDEV";//contraseña
         boolean getIn=false;

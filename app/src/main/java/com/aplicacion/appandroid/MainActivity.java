@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
             protected Void doInBackground(Integer... params) {
                 try {
                     List_Process list = new List_Process();
-                    list.lista();
+                    list.lista("ls");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
             protected Void doInBackground(Integer... params) {
                 try {
                     List_Process list = new List_Process();
-                    list.lista();
+                    list.lista("ls");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -67,6 +67,14 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent( MainActivity.this, ExplorerActivity.class);
+                startActivity(intent);
+            }
+        });
+        final Button goToFilesServerFTP = findViewById(R.id.btn_sawTheServer);
+        goToFilesServerFTP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent( MainActivity.this, SearchinserverActivity.class);
                 startActivity(intent);
             }
         });
