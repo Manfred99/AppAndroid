@@ -21,7 +21,7 @@ public class List_Process {
 //        host=arg[0];
 //      }
 //      else{
-            host="scdv4001@192.168.43.239"; // enter username and ipaddress for machine you need to connect
+            host="scdv4001@192.168.1.13"; // enter username and ipaddress for machine you need to connect
 //      }
             String user=host.substring(0, host.indexOf('@'));
             host=host.substring(host.indexOf('@')+1);
