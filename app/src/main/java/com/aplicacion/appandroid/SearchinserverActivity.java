@@ -120,7 +120,8 @@ public class SearchinserverActivity extends AppCompatActivity {
     }
     private void downloadFile(){
         FTPClient client = new FTPClient();
-        String sFTP = "192.168.1.13";//direccion del servidor
+        IpAdressClass ipStuff = new IpAdressClass();
+        String sFTP = ipStuff.ip1;//direccion del servidor
         String sUser = "transferftp";//usuario
         String sPassword = "FTPDEV";//contraseña
         boolean getIn=false;
@@ -133,11 +134,11 @@ public class SearchinserverActivity extends AppCompatActivity {
             System.out.println("Reply "+reply);
 
             if(FTPReply.isPositiveCompletion(reply)){
-                client.setFileType(FTP.BINARY_FILE_TYPE);
+                client.setFileType(FTP.LOCAL_FILE_TYPE);
                 //client.
                 client.enterLocalPassiveMode();
                 // APPROACH #1: using retrieveFile(String, OutputStream)
-                String remoteFile1 = "/home/transferftp/ftp/files/"+itemSelectedInterests;
+                String remoteFile1 = itemSelectedInterests;
                 File downloadFile1 = new File("/storage/emulated/0/DownloadsServer/"+itemSelectedInterests);
                 OutputStream outputStream1 = new BufferedOutputStream(new FileOutputStream(downloadFile1));
                 boolean success = client.retrieveFile(remoteFile1, outputStream1);
