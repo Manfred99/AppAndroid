@@ -131,7 +131,7 @@ public class SearchinserverActivity extends AppCompatActivity {
             System.out.println("Reply "+reply);
 
             if(FTPReply.isPositiveCompletion(reply)){
-                client.setFileType(FTP.LOCAL_FILE_TYPE);
+                client.setFileType(FTP.BINARY_FILE_TYPE);
                 //client.
                 client.enterLocalPassiveMode();
                 // APPROACH #1: using retrieveFile(String, OutputStream)

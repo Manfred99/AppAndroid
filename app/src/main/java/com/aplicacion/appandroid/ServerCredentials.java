@@ -8,7 +8,7 @@ public class ServerCredentials {
     public String ipDevelopmentServer="";
 
     public ServerCredentials() {
-        this.domainDevelopmentServer = "scdv4001@192.168.1.13";
-        this.ipDevelopmentServer = "192.168.1.13";
+        this.domainDevelopmentServer = "scdv4001@192.168.43.239";
+        this.ipDevelopmentServer = "192.168.43.239";
     }
 }
