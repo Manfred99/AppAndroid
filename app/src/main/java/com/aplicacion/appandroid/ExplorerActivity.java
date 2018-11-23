@@ -17,12 +17,16 @@ import java.io.File;
 import java.io.FileInputStream;
 
 public class ExplorerActivity extends AppCompatActivity {
+    /**
+     Con esta clase paso archivos del celular al server
+     **/
     Button searchButton;
     Button doneButton;
     TextView txtUbicacion;
     String ubicacion = "";
     MemoryShare ms;
     String answer;
+    Button btn_GoToMainActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,14 @@ public class ExplorerActivity extends AppCompatActivity {
         searchButton = findViewById(R.id.btn_Search);
         doneButton = findViewById(R.id.btn_Done);
         txtUbicacion = findViewById(R.id.txt_PathFile);
+        btn_GoToMainActivity = findViewById(R.id.btn_GoBackMainActivity2);
+        btn_GoToMainActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent( ExplorerActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +95,9 @@ public class ExplorerActivity extends AppCompatActivity {
     }
     private void uploadFile(){
         FTPClient client = new FTPClient();
-        String sFTP = "192.168.1.13";//direccion del servidor
+        ServerCredentials serverCredentials = new ServerCredentials();
+
+        String sFTP = serverCredentials.ipDevelopmentServer;//direccion del servidor
         String sUser = "transferftp";//usuario
         String sPassword = "FTPDEV";//contraseña
         boolean getIn=false;

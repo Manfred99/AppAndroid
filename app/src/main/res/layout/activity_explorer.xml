@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".ExplorerActivity">
 
+    <Button
+        android:id="@+id/btn_GoBackMainActivity2"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="131dp"
+        android:layout_marginEnd="87dp"
+        android:layout_marginLeft="87dp"
+        android:layout_marginRight="87dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="81dp"
+        android:text="@string/btn_GoBackMainActivity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Done" />
+
     <TextView
         android:id="@+id/txt_PathFile"
         android:layout_width="221dp"
@@ -16,7 +32,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="42dp"
         android:text="@string/txt_PathFile"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@+id/btn_Search"
         app:layout_constraintStart_toStartOf="parent"

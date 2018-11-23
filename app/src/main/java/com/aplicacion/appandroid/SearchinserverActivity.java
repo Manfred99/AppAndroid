@@ -1,10 +1,12 @@
 package com.aplicacion.appandroid;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -15,9 +17,7 @@ import org.apache.commons.net.ftp.FTPReply;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +26,9 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 public class SearchinserverActivity extends AppCompatActivity {
+    /**
+     Con esta clase paso archivos del server al celular
+     **/
     public  String listOfFiles1 = null;
     List<Map<String, String>> interestsList;
     private List<String> listNombreArchivos;
@@ -36,31 +39,14 @@ public class SearchinserverActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchinserver);
-
-        new AsyncTask<Integer, Void, Void>(){
+        final Button btn_GoToMainActivity = findViewById(R.id.btn_GoBackMainActivity);
+        btn_GoToMainActivity.setOnClickListener(new View.OnClickListener() {
             @Override
-            protected Void doInBackground(Integer... params) {
-                try {
-                    List_Process list = new List_Process();
-                    list.lista("ls /home/transferftp/ftp/files");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return null;
+            public void onClick(View v) {
+                Intent intent=new Intent( SearchinserverActivity.this, MainActivity.class);
+                startActivity(intent);
             }
-        }.execute(1);
-        new AsyncTask<Integer, Void, Void>(){
-            @Override
-            protected Void doInBackground(Integer... params) {
-                try {
-                    List_Process list = new List_Process();
-                    list.lista("ls /home/transferftp/ftp/files");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-        }.execute(1);
+        });
         final ListView listView = findViewById(R.id.ls_FilesFTP);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -84,10 +70,21 @@ public class SearchinserverActivity extends AppCompatActivity {
                         return null;
                     }
                 }.execute(1);
+                new AsyncTask<Integer, Void, Void>(){
+                    @Override
+                    protected Void doInBackground(Integer... params) {
+                        try {
+                            downloadFile();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        return null;
+                    }
+                }.execute(1);
                 Toast.makeText(SearchinserverActivity.this, "Has seleccionado: "+itemSelectedInterests, Toast.LENGTH_SHORT).show();
             }
         });
-        listOfFiles1 = List_Process.listOfProcess;
+        listOfFiles1 = SSHActivities.serverOutput;
         interestsList = new ArrayList<Map<String,String>>();
         listNombreArchivos = new ArrayList<String>();
         fillListNameFiles();
@@ -120,8 +117,8 @@ public class SearchinserverActivity extends AppCompatActivity {
     }
     private void downloadFile(){
         FTPClient client = new FTPClient();
-        IpAdressClass ipStuff = new IpAdressClass();
-        String sFTP = ipStuff.ip1;//direccion del servidor
+        ServerCredentials serverCredentials = new ServerCredentials();
+        String sFTP = serverCredentials.ipDevelopmentServer;//direccion del servidor
         String sUser = "transferftp";//usuario
         String sPassword = "FTPDEV";//contraseña
         boolean getIn=false;

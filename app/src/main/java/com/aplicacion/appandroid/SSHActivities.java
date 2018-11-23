@@ -8,9 +8,11 @@ import com.jcraft.jsch.UserInfo;
 
 import java.io.InputStream;
 
-public class List_Process {
-
-    public static String listOfProcess = null;
+public class SSHActivities {
+    /**
+     Con esta clase cargo los directorios del servidor en el list view necesarios para las vistas
+     **/
+    public static String serverOutput = null;
 
     public void lista(String action){
         try{
@@ -21,8 +23,8 @@ public class List_Process {
 //        host=arg[0];
 //      }
 //      else{
-            IpAdressClass ipAdress = new IpAdressClass();
-            host= ipAdress.ipServer1; // enter username and ipaddress for machine you need to connect
+            ServerCredentials serverCredentials = new ServerCredentials();
+            host= serverCredentials.domainDevelopmentServer; // enter username and ipaddress for machine you need to connect
 //      }
             String user=host.substring(0, host.indexOf('@'));
             host=host.substring(host.indexOf('@')+1);
@@ -53,7 +55,7 @@ public class List_Process {
                 while(in.available()>0){
                     int i=in.read(tmp, 0, 1024);
                     if(i<0)break;
-                    listOfProcess = new String(tmp, 0, i);
+                    serverOutput = new String(tmp, 0, i);
                     System.out.print(new String(tmp, 0, i));
                 }
                 if(channel.isClosed()){

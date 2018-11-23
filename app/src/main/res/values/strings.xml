@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">AppAndroid</string>
-    <string name="btn_GoExplorerPath">Explorer</string>
-    <string name="btn_Procesos">Procesos</string>
-    <string name="btn_Search">Buscar</string>
-    <string name="btn_Done">Enviar</string>
+    <string name="btn_GoExplorerPath">UploadFile</string>
+    <string name="btn_Search">Search</string>
+    <string name="btn_Done">Upload</string>
     <string name="txt_PathFile">Path</string>
     <string name="btn_sawTheServer">Download File</string>
     <string name="txt_SelectAFile">Seleccione el acrivo</string>
+    <string name="btn_GoBackMainActivity">To MainActivity</string>
 </resources>

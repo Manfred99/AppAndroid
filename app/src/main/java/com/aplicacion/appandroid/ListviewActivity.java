@@ -22,6 +22,9 @@ import java.util.List;
 import java.util.Map;
 
 public class ListviewActivity extends AppCompatActivity {
+    /**
+     Con esta clase cargo los directorios y archivos necesarios para el explorador de archivos
+     **/
     private List<String> listNombreArchivos;
     private List<String> listRutaArchivos;
     private ArrayAdapter<String> adaptador;

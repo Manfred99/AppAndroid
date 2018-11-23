@@ -14,29 +14,18 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        final Button process;
-
-        process = (Button) findViewById(R.id.btn_process);
-
+/**
+ En esta actividad es para redirigirme a las dos opciones que tengo de FTP
+ Con esto traigo los directorios y archivos del servidor
+ Esto se pone en lugares independientes a las clases donde las voy a utilizar
+ asi me evito de errores por tiempos de consulta en el server
+ **/
         new AsyncTask<Integer, Void, Void>(){
             @Override
             protected Void doInBackground(Integer... params) {
                 try {
-                    List_Process list = new List_Process();
-                    list.lista("ls");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-        }.execute(1);
-        new AsyncTask<Integer, Void, Void>(){
-            @Override
-            protected Void doInBackground(Integer... params) {
-                try {
-                    List_Process list = new List_Process();
-                    list.lista("ls");
+                    SSHActivities list = new SSHActivities();
+                    list.lista("ls /home/transferftp/ftp/files");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -44,24 +33,20 @@ public class MainActivity extends Activity {
             }
         }.execute(1);
 
-        process.setOnClickListener(new View.OnClickListener() {
+        new AsyncTask<Integer, Void, Void>(){
             @Override
-            public void onClick(View v) {
-                Intent intent=new Intent( MainActivity.this, ViewProcess.class);
-
-                Bundle bundle=new Bundle();
-                bundle.putString("NAME", "Procesos");
-
-                //coloca el mensaje que la actividad va a transmitir
-                intent.putExtras(bundle);
-
-
-                //hace el paso de actividades
-
-                startActivity(intent);
-                Toast.makeText(MainActivity.this, "Process", Toast.LENGTH_LONG).show();
+            protected Void doInBackground(Integer... params) {
+                try {
+                    SSHActivities list = new SSHActivities();
+                    list.lista("ls /home/transferftp/ftp/files");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return null;
             }
-        });
+        }.execute(1);
+
+
         final Button goToExplorerPath = findViewById(R.id.btn_GoExplorerPath);
         goToExplorerPath.setOnClickListener(new View.OnClickListener() {
             @Override
